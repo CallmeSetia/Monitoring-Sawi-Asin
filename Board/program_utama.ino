@@ -42,12 +42,8 @@ void setup() {
 }
 
 void loop() {
-  Sens_BacaPH();
+  Sens_BacaPH(); 
   Suhu_GetTemp();
- 
-  Serial.println("SUHU : " + String(random(30, 32)*1.01));
-//  Serial.println("SUHU 1: " + String(getSuhu[0]) + " \nSUHU 2:  " + String(getSuhu[1]));
-   
-  //  getNilaiFuzzy();
-  //  Kirim_KeESP32();
+  getNilaiFuzzy();  // Hitung Fuzzy
+  Kirim_KeESP32(); // Kirim Data Ke ESP32
 }
