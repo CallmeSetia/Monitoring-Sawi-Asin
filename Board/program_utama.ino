@@ -20,7 +20,7 @@ int pinPH[2] = {A0, A1};
 int pinSalinity[2] = {A2, A3};
 int pinUVSensor[2] = {A4, A5};
 
-// Variable GLOBAL
+// Variable GLOBAL u/  Menampung Nilai Pembacaan Sensor
 float tegPH[2] = {0.0, 0.0};
 float kalibrasiPH[2] = {24.04 - 0.4, 24.04 - 1.2};
 float hasilPH[2]  = {0.0 , 0.0};
