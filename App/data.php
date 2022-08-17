@@ -1,30 +1,35 @@
 <?php
-    include "./connection.php";
+    include "./connection.php"; // Include Koneksi Database
 
     //$connect = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_DATABASE);
-    $connection = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_DATABASE);
+    $connection = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_DATABASE); // INISIALISAI KONEKSI
+    
+    // AMBIL DATA UNTUK GRAFIK
+    $sqlA = mysqli_query($connection, "SELECT * FROM data_sensor_a ORDER BY id DESC LIMIT 10"); // Salinitas 1
+    $sqlB = mysqli_query($connection, "SELECT * FROM data_sensor_b ORDER BY id DESC LIMIT 10"); // Salinitas 2
+    $sqlC = mysqli_query($connection, "SELECT * FROM data_sensor_c ORDER BY id DESC LIMIT 10"); // Suhu 1
+    $sqlD = mysqli_query($connection, "SELECT * FROM data_sensor_d ORDER BY id DESC LIMIT 10"); // SUhu 2
+    $sqlE = mysqli_query($connection, "SELECT * FROM data_sensor_e ORDER BY id DESC LIMIT 10"); // PH 1
+    $sqlF = mysqli_query($connection, "SELECT * FROM data_sensor_f ORDER BY id DESC LIMIT 10"); // PH 2
+    $sqlG = mysqli_query($connection, "SELECT * FROM data_sensor_g ORDER BY id DESC LIMIT 10"); // UV 1
+    $sqlH = mysqli_query($connection, "SELECT * FROM data_sensor_h ORDER BY id DESC LIMIT 10"); // UV 2
+    $sqlI = mysqli_query($connection, "SELECT * FROM data_sensor_i ORDER BY id DESC LIMIT 10"); // FUZZY 
 
-    $sqlA = mysqli_query($connection, "SELECT * FROM data_sensor_a ORDER BY id DESC LIMIT 10");
-    $sqlB = mysqli_query($connection, "SELECT * FROM data_sensor_b ORDER BY id DESC LIMIT 10");
-    $sqlC = mysqli_query($connection, "SELECT * FROM data_sensor_c ORDER BY id DESC LIMIT 10");
-    $sqlD = mysqli_query($connection, "SELECT * FROM data_sensor_d ORDER BY id DESC LIMIT 10");
-    $sqlE = mysqli_query($connection, "SELECT * FROM data_sensor_e ORDER BY id DESC LIMIT 10");
-    $sqlF = mysqli_query($connection, "SELECT * FROM data_sensor_f ORDER BY id DESC LIMIT 10");
-    $sqlG = mysqli_query($connection, "SELECT * FROM data_sensor_g ORDER BY id DESC LIMIT 10");
-    $sqlH = mysqli_query($connection, "SELECT * FROM data_sensor_h ORDER BY id DESC LIMIT 10");
-    $sqlI = mysqli_query($connection, "SELECT * FROM data_sensor_i ORDER BY id DESC LIMIT 10");
-    $sqlABrief = mysqli_query($connection, "SELECT * FROM data_sensor_a WHERE id=(SELECT max(id) FROM data_sensor_a)");
-    $sqlBBrief = mysqli_query($connection, "SELECT * FROM data_sensor_b WHERE id=(SELECT max(id) FROM data_sensor_b)");
-    $sqlCBrief = mysqli_query($connection, "SELECT * FROM data_sensor_c WHERE id=(SELECT max(id) FROM data_sensor_c)");
-    $sqlDBrief = mysqli_query($connection, "SELECT * FROM data_sensor_d WHERE id=(SELECT max(id) FROM data_sensor_d)");
-    $sqlEBrief = mysqli_query($connection, "SELECT * FROM data_sensor_e WHERE id=(SELECT max(id) FROM data_sensor_e)");
-    $sqlFBrief = mysqli_query($connection, "SELECT * FROM data_sensor_f WHERE id=(SELECT max(id) FROM data_sensor_f)");
-    $sqlGBrief = mysqli_query($connection, "SELECT * FROM data_sensor_g WHERE id=(SELECT max(id) FROM data_sensor_g)");
-    $sqlHBrief = mysqli_query($connection, "SELECT * FROM data_sensor_h WHERE id=(SELECT max(id) FROM data_sensor_h)");
-    $sqlIBrief = mysqli_query($connection, "SELECT * FROM data_sensor_i WHERE id=(SELECT max(id) FROM data_sensor_i)");
-    $sqlGraphA = mysqli_query($connection, "SELECT nilai_sensor FROM data_sensor_a ORDER BY id DESC LIMIT 10");
-    $result = array();
+    // AMBIL DATA UNTUK MONITORING
+    $sqlABrief = mysqli_query($connection, "SELECT * FROM data_sensor_a WHERE id=(SELECT max(id) FROM data_sensor_a)"); // Salinitas 1
+    $sqlBBrief = mysqli_query($connection, "SELECT * FROM data_sensor_b WHERE id=(SELECT max(id) FROM data_sensor_b)");// Salinitas 2
+    $sqlCBrief = mysqli_query($connection, "SELECT * FROM data_sensor_c WHERE id=(SELECT max(id) FROM data_sensor_c)");// Suhu 1
+    $sqlDBrief = mysqli_query($connection, "SELECT * FROM data_sensor_d WHERE id=(SELECT max(id) FROM data_sensor_d)");// SUhu 2
+    $sqlEBrief = mysqli_query($connection, "SELECT * FROM data_sensor_e WHERE id=(SELECT max(id) FROM data_sensor_e)");// PH 1
+    $sqlFBrief = mysqli_query($connection, "SELECT * FROM data_sensor_f WHERE id=(SELECT max(id) FROM data_sensor_f)");// PH 2
+    $sqlGBrief = mysqli_query($connection, "SELECT * FROM data_sensor_g WHERE id=(SELECT max(id) FROM data_sensor_g)");// UV 1
+    $sqlHBrief = mysqli_query($connection, "SELECT * FROM data_sensor_h WHERE id=(SELECT max(id) FROM data_sensor_h)");// UV 2
+    $sqlIBrief = mysqli_query($connection, "SELECT * FROM data_sensor_i WHERE id=(SELECT max(id) FROM data_sensor_i)"); // FUZZY 
+    $sqlGraphA = mysqli_query($connection, "SELECT nilai_sensor FROM data_sensor_a ORDER BY id DESC LIMIT 10"); // FUZZY 
+    $result = array(); // INISIALISAI VAR UNTUK FETCH DATA DARI DB
+    
 
+   // AMBIL DATA DI DB
     while ($row = mysqli_fetch_assoc($sqlA)) {
         $dataA[] = $row;
     }
@@ -94,7 +99,8 @@
         $data[] = $row;
     }
     */
-
+    
+    // KIRIM DATA KE WEB
     echo json_encode(array("resultA"=>$dataA, "resultB"=>$dataB, "resultC"=>$dataC,
         "resultD"=>$dataD, "resultE"=>$dataE, "resultF"=>$dataF,
         "resultG"=>$dataG, "resultH"=>$dataH, "resultI"=>$dataI,
