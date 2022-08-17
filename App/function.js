@@ -1,16 +1,16 @@
 $(document).ready(function() {
-    selesai();
+    selesai(); 
 
 
 });
 
-function selesai() {
+function selesai() { // LOOPING FUNCTION REKURSIF
     setTimeout(function() {
         update();
         selesai();
     }, 200);
 }
-
+// UPDATE DATA LOGGING HISTORY DI WEB
 function update() {
     $.getJSON("data.php", function(dataA) {
         $("#dataA").empty();
