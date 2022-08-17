@@ -73,7 +73,8 @@
                 </div>
             </div>
         </nav>
-
+        <!-- Start Tampil Salinitas -->
+        <!--    GRAFIK      -->
         <div class="container_main container-fluid">
             <div class="container-fluid container_value">
                 <div class="row">
@@ -92,7 +93,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!--  HASIL DATA SALINITAS DARI DB -->
                 <div class="row second_row">
                     <div class="col-sm-12 col-md-6">
                         <div class="card">
@@ -126,7 +127,9 @@
                         </div>
                     </div>
                 </div>
-
+                <!--  END SALINITAS                -->
+                <!--  START MONITORING DATA SUHU                 -->
+                 <!--  GRAFIK                 -->
                 <div class="row second_row">
                     <div class="col-sm-12 col-md-12">
                         <div class="card">
@@ -143,7 +146,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!--  MONITRONG DATA                  -->
                 <div class="row second_row">
                     <div class="col-sm-12 col-md-6">
                         <div class="card">
@@ -176,7 +179,9 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- END  SUHU                 -->
+                
+                
                 <div class="row second_row">
                     <div class="col-sm-12 col-md-12">
                         <div class="card">
@@ -193,7 +198,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="row second_row">
                     <div class="col-sm-12 col-md-6">
                         <div class="card">
